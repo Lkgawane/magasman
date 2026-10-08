@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma 'Gas' Man | Fast & Free Gas Delivery</title>
+    <style>
+        :root {
+            --primary: #FFCC00;
+            --primary-dark: #E6B800;
+            --dark: #1A1A1A;
+            --light: #F9F9F9;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+            --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--dark) 60%, #333333 100%);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        header h1 span {
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #CCCCCC;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s, background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20BA5A;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Banner Badge */
+        .free-delivery-badge {
+            background-color: var(--primary);
+            color: var(--dark);
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+        }
+
+        /* Core Features / Services Section */
+        .services-container {
+            padding: 5rem 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--light);
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            border-bottom: 4px solid transparent;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 5%;
+            background-color: var(--light);
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .price-box {
+            background-color: var(--white);
+            padding: 3rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-box .size {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .price-box .tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 1.5rem 0;
+        }
+
+        .price-box .tag span {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .price-box ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Checkout / Selection System */
+        .order-system {
+            background-color: var(--white);
+            padding: 5rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -2rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group select, .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group select:focus, .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-dark);
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Contact Details Footer Section */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 5% 2rem 5%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #333333;
+        }
+
+        .footer-col h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #CCCCCC;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Layout fixes */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Simplified mobile handling */
+            .payment-options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="logo-text">Ma 'Gas' Man</div>
+        <ul class="nav-links">
+            <li><a href="#services">Our Markets</a></li>
+            <li><a href="#pricing">Products & Pricing</a></li>
+            <li><a href="#order">Order Instantly</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Showcase Header -->
+    <header>
+        <div class="free-delivery-badge">🚚 FREE DELIVERY INCLUDED</div>
+        <h1>Reliable LPG Gas Supplied Straight To Your Door</h1>
+        <p>We supply Bulk, Wholesale, and Retail Liquefied Petroleum Gas for households, catering, and business setups.</p>
+        <div class="cta-buttons">
+            <a href="#order" class="btn btn-primary">Secure Online Payment</a>
+            <a href="https://wa.me/27761270034?text=Hi%20Ma%20Gas%20Man%2C%20I%20would%20like%20to%20place%20an%20order%20for%20gas%20delivery." target="_blank" class="btn btn-whatsapp">💬 Order via WhatsApp</a>
+        </div>
+    </header>
+
+    <!-- Target Segments & Services -->
+    <section class="services-container" id="services">
+        <h2 class="section-title">Who We Supply</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🏡 Households</h3>
+                <p>Fast, direct cylinder exchanges for home cooking and residential gas heating systems.</p>
+            </div>
+            <div class="card">
+                <h3>🏢 Businesses</h3>
+                <p>Commercial-grade continuous supply setup options structured for corporate and light industrial properties.</p>
+            </div>
+            <div class="card">
+                <h3>🍳 Catering</h3>
+                <p>High-volume, immediate delivery solutions designed for restaurants, food stalls, and catering functions.</p>
+            </div>
+            <div class="card">
+                <h3>📦 Wholesale & Retail</h3>
+                <p>Bulk distribution pathways built perfectly for retail shops and localized gas resellers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Grid Area -->
+    <section class="pricing-section" id="pricing">
+        <h2 class="section-title">Gas Cylinder Sizes & Pricing</h2>
+        <p style="margin-top: -2rem; margin-bottom: 3rem; color: #666;">Select the ideal capacity for your needs. Zero hidden delivery fees.</p>
+        <div class="pricing-grid">
+            <div class="price-box">
+                <div>
+                    <div class="size">9kg</div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Perfect for small stoves</li>
+                        <li>Light portable patio heaters</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tag"><span>R</span>320</div>
+                    <a href="#order" class="btn btn-primary" style="width: 100%;" onclick="updateSelection('9kg')">Select</a>
+                </div>
+            </div>
+            <div class="price-box">
+                <div>
+                    <div class="size">14kg</div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Mid-sized everyday usage</li>
+                        <li>Excellent standard fallback</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tag"><span>R</span>500</div>
+                    <a href="#order" class="btn btn-primary" style="width: 100%;" onclick="updateSelection('14kg')">Select</a>
+                </div>
+            </div>
+            <div class="price-box">
+                <div>
+                    <div class="size">19kg</div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Heavy residential usage</li>
+                        <li>Standard commercial cooking</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tag"><span>R</span>640</div>
+                    <a href="#order" class="btn btn-primary" style="width: 100%;" onclick="updateSelection('19kg')">Select</a>
+                </div>
+            </div>
+            <div class="price-box">
+                <div>
+                    <div class="size">48kg</div>
+                    <ul style="margin-top: 1rem;">
+                        <li>Bulk heating setups</li>
+                        <li>Full industrial/catering runs</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tag"><span>R</span>1550</div>
+                    <a href="#order" class="btn btn-primary" style="width: 100%;" onclick="updateSelection('48kg')">Select</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Unified Ordering Area -->
+    <section style="background-color: #F0F0F0; padding: 4rem 5%; text-align: center;" id="order">
+        <h2 class="section-title">Place Your Order</h2>
+        <p style="margin-top: -2rem; margin-bottom: 3rem; color: #666;">Choose your payment preferences below: instant secure cards via PayFast or convenient delivery channels.</p>
+        
+        <div class="order-system">
+            <form id="gasOrderForm" onsubmit="handleOrderSubmission(event)">
+                <div class="form-group">
+                    <label for="cylinderSize">Select Cylinder Size</label>
+                    <select id="cylinderSize" onchange="calculatePrice()">
+                        <option value="9kg" data-price="320">9kg Cylinder — R320</option>
+                        <option value="14kg" data-price="500">14kg Cylinder — R500</option>
+                        <option value="19kg" data-price="640">19kg Cylinder — R640</option>
+                        <option value="48kg" data-price="1550">48kg Cylinder — R1550</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" min="1" value="1" onchange="calculatePrice()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Your Full Name</label>
+                    <input type="text" id="fullName" placeholder="e.g. Kagiso Kgwane" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. 076 127 0034" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <textarea id="deliveryAddress" rows="3" placeholder="Enter your full street address" required></textarea>
+                </div>
+
+                <div style="font-size: 1.4rem; font-weight: bold; margin: 2rem 0; text-align: left; padding: 1rem; background-color: var(--light); border-left: 5px solid var(--primary);">
+                    Total Amount Due: <span id="totalDisplay">R320</span>
+                </div>
+
+                <h3 style="text-align: left; margin-bottom: 0.5rem; font-size: 1.1rem;">Choose Settlement Action:</h3>
+                
+                <div class="payment-options">
+                    <!-- PayFast Digital Online Integration Gateway Action -->
+                    <button type="button" class="btn btn-primary" onclick="submitToPayFast()">
+                        💳 Pay Now Securely (PayFast)
+                    </button>
+                    <!-- COD / Manual Order Submission Action -->
+                    <button type="button" class="btn btn-whatsapp" onclick="submitToWhatsApp()">
+                        💬 Order via WhatsApp (COD)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Information / Contact footer details section -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Ma 'Gas' Man</h4>
+                <p>Your premium, top-tier domestic, commercial, and industrial retail supplier of high-quality LPG Gas refills.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Points</h4>
+                <a href="tel:0761270034">📞 076 127 0034</a>
+                <a href="tel:0664608407">📞 066 460 8407</a>
+                <a href="mailto:Kagisokgwane@gmail.com">✉️ Kagisokgwane@gmail.com</a>
+            </div>
+            <div class="footer-col">
+                <h4>Operational Areas</h4>
+                <p>Bulk, Wholesale, and Retail Delivery paths direct to Households, Catering businesses, and Corporate premises.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ma 'Gas' Man. All Rights Reserved. Free Delivery Area Coverage Only.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Pricing array lookup reference
+        const pricingData = {
+            '9kg': 320,
+            '14kg': 500,
+            '19kg': 640,
+            '48kg': 1550
+        };
+
+        function updateSelection(size) {
+            document.getElementById('cylinderSize').value = size;
+            calculatePrice();
+        }
+
+        function calculatePrice() {
+            const size = document.getElementById('cylinderSize').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const total = pricingData[size] * quantity;
+            document.getElementById('totalDisplay').innerText = 'R' + total;
+            return total;
+        }
+
+        // WhatsApp formatting logic construction
+        function submitToWhatsApp() {
+            const size = document.getElementById('cylinderSize').value;
+            const qty = document.getElementById('quantity').value;
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('deliveryAddress').value;
+            const total = calculatePrice();
+
+            if(!name || !phone || !address) {
+                alert('Please complete Name, Phone, and Delivery Address before sending.');
+                return;
+            }
+
+            const message = `Hi Ma 'Gas' Man! I'd like to place an order:%0A%0A` +
+                            `*Gas Size:* ${size}%0A` +
+                            `*Quantity:* ${qty}%0A` +
+                            `*Total Price:* R${total}%0A%0A` +
+                            `*Customer Name:* ${name}%0A` +
+                            `*Contact Phone:* ${phone}%0A` +
+                            `*Delivery Address:* ${address}%0A%0A` +
+                            `Payment Method: Cash / Card on Delivery`;
+
+            window.open(`https://wa.me/27761270034?text=${message}`, '_blank');
+        }
+
+        // PayFast Form Generation & Direct Forwarding Logic
+        function submitToPayFast() {
+            const size = document.getElementById('cylinderSize').value;
+            const qty = document.getElementById('quantity').value;
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('deliveryAddress').value;
+            const total = calculatePrice();
+
+            if(!name || !phone || !address) {
+                alert('Please fill out Name, Phone, and Delivery Address before proceeding to payment.');
+                return;
+            }
+
+            // Create a temporary hidden form targeting the real PayFast checkout url
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://www.payfast.co.za/eng/process';
+            form.target = '_blank';
+
+            // PayFast Merchant Configurations (Sandbox credentials shown below as structural placeholders)
+            // Replace merchant_id & merchant_key with live values from your profile dashboard settings.
+            const parameters = {
+                'merchant_id': '10000100', 
+                'merchant_key': '46f0cd694581a',
+                'return_url': window.location.href,
+                'cancel_url': window.location.href,
+                'name_first': name.split(' ')[0] || 'Customer',
+                'name_last': name.split(' ')[1] || 'Name',
+                'cell_number': phone,
+                'amount': total.toFixed(2),
+                'item_name': `${qty} x ${size} Gas Cylinder Refill`,
+                'item_description': `Delivery Address: ${address}`
+            };
+
+            for (const key in parameters) {
+                if (parameters.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = parameters[key];
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        // Prevent standard empty native page submission actions
+        function handleOrderSubmission(e) {
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
